@@ -1,0 +1,21 @@
+{
+  "name": "dos-comas-chat-server",
+  "version": "1.0.0",
+  "description": "Simple chat backend with GraphQL",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "Andres Mechali",
+  "license": "ISC",
+  "dependencies": {
+    "casual": "^1.6.2",
+    "cors": "^2.8.5",
+    "firebase-admin": "^8.9.2",
+    "graphql-yoga": "^1.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
