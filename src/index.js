@@ -10,7 +10,7 @@ const resolvers = require("./resolver");
 const http = require("http");
 
 const pubsub = new PubSub();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 const server = new ApolloServer({
   typeDefs,
