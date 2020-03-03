@@ -35,7 +35,7 @@ const httpServer = http.createServer(app);
 
 server.installSubscriptionHandlers(httpServer);
 
-httpServer.listen({ port: 4000 }, () => {
+httpServer.listen({ port: PORT }, () => {
   console.log(
     `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`
   );
