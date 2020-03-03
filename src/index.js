@@ -1,19 +1,15 @@
-const { GraphQLServer } = require("graphql-yoga");
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require("express");
 const {
   ApolloServer,
-  graphqlExpress,
   PubSub
 } = require("apollo-server-express");
 const typeDefs = require("./schema");
 const resolvers = require("./resolver");
-const cors = require("cors");
 const http = require("http");
 
-const bodyParser = require("body-parser");
-
 const pubsub = new PubSub();
-//const server = new GraphQLServer({ typeDefs, resolvers, context: { pubsub } });
 const PORT = 4000;
 
 const server = new ApolloServer({
