@@ -2,36 +2,59 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
-    id: String!
-    displayName: String
+    id: ID!
+    displayName: String!
+    email: String!
+    photo: Link
+  }
+
+  type Link {
+    id: ID!
+    url: String!
+  }
+
+  type Read {
+    id: ID!
+    timestamp: Int!
+    user: User!
   }
 
   type Message {
-    id: String!
-    from: String!
-    timestamp: String!
+    id: ID!
+    from: User!
+    timestamp: Int!
     text: String!
-    read: Boolean!
+  }
+
+  type MessageTree {
+    id: ID!
+    message: Message!
+    read: [Read]!
+    children: [MessageTree]!
   }
 
   type Chat {
-    id: String!
-    users: [User]
-    type: String!
-    messages: [Message]
-    messageCount: Int
+    id: ID!
+    chatName: String
+    users: [User]!
+    messages: MessageTree!
   }
 
   type Query {
-    chats(userId: String!): [Chat]
-    chat(chatId: String!): Chat
-    users: [User]
-    user(userId: String!): User
+    chats(userId: ID!): [Chat]!
+    chat(chatId: ID!): Chat
+    user(userId: ID!): User
   }
 
   type Mutation {
-    sendMessage(from: String!, to: String!, text: String!): Message
-    createChat(userList: [String]!): String
+    createChat(
+      userId: ID!
+      chatName: String
+      participants: [ID!]!
+      text: String!
+    ): Boolean
+    sendMessage(userId: ID!, chatId: ID!, text: String!): Boolean
+    changeChatName(chatId: ID!, chatName: String!): String
   }
 
   type Subscription {
