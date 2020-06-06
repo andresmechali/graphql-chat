@@ -11,7 +11,7 @@
   "author": "Andres Mechali",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^2.10.1",
+    "apollo-server": "^2.14.2",
     "apollo-server-express": "^2.10.1",
     "body-parser": "^1.19.0",
     "casual": "^1.6.2",
